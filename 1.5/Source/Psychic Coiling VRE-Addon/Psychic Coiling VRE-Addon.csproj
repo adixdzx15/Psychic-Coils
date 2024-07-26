@@ -56,6 +56,7 @@
     <Compile Include="Harmony\NeuralHeatPatch.cs" />
     <Compile Include="Harmony\PawnComponentsUtilityPatch.cs" />
     <Compile Include="Harmony\PsylinkUnPreventionPatch.cs" />
+    <Compile Include="Harmony\PuppeteerHandlerSlave.cs" />
     <Compile Include="Harmony\PuppeteerMentalBreakFixer.cs" />
     <Compile Include="VREAPC_InternalDefs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

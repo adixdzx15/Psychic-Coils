@@ -16,7 +16,7 @@ namespace Psychic_Coiling_VRE_Addon
     {
         static Main()
         {
-            var harmony = new Harmony("com.Psychic_Coiling_VRE_Addon");
+            var harmony = new HarmonyLib.Harmony("com.Psychic_Coiling_VRE_Addon");
             harmony.PatchAll();
         }
     }
