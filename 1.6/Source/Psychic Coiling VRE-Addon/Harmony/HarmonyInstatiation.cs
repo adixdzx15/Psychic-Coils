@@ -8,6 +8,7 @@ using Verse;
 using Unity;
 using HarmonyLib;
 using Steamworks;
+using UnityEngine;
 
 namespace Psychic_Coiling_VRE_Addon
 {
@@ -18,6 +19,63 @@ namespace Psychic_Coiling_VRE_Addon
         {
             var harmony = new HarmonyLib.Harmony("com.Psychic_Coiling_VRE_Addon");
             harmony.PatchAll();
+        }
+    }
+
+    public class Settings : Mod
+    {
+        public static StoredSettings storedSettings;
+        public Settings(ModContentPack content) : base(content)
+        {
+            storedSettings = GetSettings<StoredSettings>();
+        }
+
+        public override string SettingsCategory()
+        {
+            return "Psychic Coiling";
+        }
+
+        public override void DoSettingsWindowContents(Rect inRect)
+        {
+            var list = new Listing_Standard();
+            list.Begin(inRect);
+            Text.Font = GameFont.Small;
+            if (ModsConfig.IsActive("VanillaExpanded.VPE.Puppeteer"))
+            {
+                list.Label("Compatibility with Vanilla Psycasts Expanded - Puppeteer:");
+                if (storedSettings.puppeteerAndroid)
+                {
+                    storedSettings.AndroidToPuppet = true;
+                }
+                list.CheckboxLabeled("Androids can swap with Puppets", ref storedSettings.AndroidToPuppet);
+                if (!storedSettings.AndroidToPuppet)
+                {
+                    storedSettings.puppeteerAndroid = false;
+                }
+                list.CheckboxLabeled("\tAndroids can directly become Puppets", ref storedSettings.puppeteerAndroid);
+
+            }
+            list.GapLine(24f);
+            list.Label("Interaction with awakened androids:");
+            list.CheckboxLabeled("Generated awakened androids have Psychic Coils", ref storedSettings.AwakenedPsychicCoils);
+            list.CheckboxLabeled("Generated awakened androids may have random psychic subroutines", ref storedSettings.AwakenedSubroutines);
+            list.End();
+        }
+    }
+
+    public class StoredSettings : ModSettings
+    {
+        public bool puppeteerAndroid;
+        public bool AndroidToPuppet = true;
+        public bool AwakenedPsychicCoils;
+        public bool AwakenedSubroutines;
+
+        public override void ExposeData()
+        {
+            base.ExposeData();
+            Scribe_Values.Look(ref puppeteerAndroid, "puppeteerAndroid");
+            Scribe_Values.Look(ref AndroidToPuppet, "androidToPuppet", true);
+            Scribe_Values.Look(ref AwakenedPsychicCoils, "awakenedPsychic", false);
         }
     }
 }
