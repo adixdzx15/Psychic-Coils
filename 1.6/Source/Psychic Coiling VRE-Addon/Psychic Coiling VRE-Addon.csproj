@@ -55,7 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Harmony\AndroidCreationWindowPatch.cs" />
-    <Compile Include="Harmony\AndroidGenerationPatch.cs" />
     <Compile Include="Harmony\HarmonyInstatiation.cs" />
     <Compile Include="Harmony\MeditationUnPreventionPatch.cs" />
     <Compile Include="Harmony\NeuralHeatPatch.cs" />

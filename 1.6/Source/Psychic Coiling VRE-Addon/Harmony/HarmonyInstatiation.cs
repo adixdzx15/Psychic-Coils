@@ -19,6 +19,7 @@ namespace Psychic_Coiling_VRE_Addon
         {
             var harmony = new HarmonyLib.Harmony("com.Psychic_Coiling_VRE_Addon");
             harmony.PatchAll();
+            PuppeteerCompatibility.HandlePuppeteerCompatibility(harmony);
         }
     }
 
@@ -40,6 +41,7 @@ namespace Psychic_Coiling_VRE_Addon
             var list = new Listing_Standard();
             list.Begin(inRect);
             Text.Font = GameFont.Small;
+            //TODO: Does not do anything yet
             if (ModsConfig.IsActive("VanillaExpanded.VPE.Puppeteer"))
             {
                 list.Label("Compatibility with Vanilla Psycasts Expanded - Puppeteer:");
@@ -55,10 +57,6 @@ namespace Psychic_Coiling_VRE_Addon
                 list.CheckboxLabeled("\tAndroids can directly become Puppets", ref storedSettings.puppeteerAndroid);
 
             }
-            list.GapLine(24f);
-            list.Label("Interaction with awakened androids:");
-            list.CheckboxLabeled("Generated awakened androids have Psychic Coils", ref storedSettings.AwakenedPsychicCoils);
-            list.CheckboxLabeled("Generated awakened androids may have random psychic subroutines", ref storedSettings.AwakenedSubroutines);
             list.End();
         }
     }

@@ -12,9 +12,9 @@ namespace Psychic_Coiling_VRE_Addon
     
     public static class PuppeteerHandlerSlave
     {
-        public static void CheckForAndHandlePuppeteerMod()
+        public static void CheckForAndHandlePuppeteerMod(Harmony harmony)
         {
-            var harmony = new HarmonyLib.Harmony("com.Psychic_Coiling_VRE_Addon");
+            //var harmony = new HarmonyLib.Harmony("com.Psychic_Coiling_VRE_Addon");
 
             // var myPrefixInfo = SymbolExtensions.GetMethodInfo(() => HandlePuppeteerCompatibilityPatch.MyPrefix( null, null, ref(false)));
             var myPrefixInfo = typeof(HandlePuppeteerCompatibilityPatch).GetMethod(nameof(HandlePuppeteerCompatibilityPatch.MyPrefix));
