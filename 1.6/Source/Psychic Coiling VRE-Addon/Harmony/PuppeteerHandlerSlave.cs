@@ -1,7 +1,9 @@
-﻿using HarmonyLib;
+﻿using System;
+using HarmonyLib;
 using Verse;
 using Verse.AI;
-using VPEPuppeteer;
+using VREAndroids;
+using MentalStateHandler_TryStartMentalState_Patch = VPEPuppeteer.MentalStateHandler_TryStartMentalState_Patch;
 
 namespace Psychic_Coiling_VRE_Addon
 {
@@ -30,6 +32,30 @@ namespace Psychic_Coiling_VRE_Addon
         }
     }
 
+    [HarmonyPatch(typeof(VREAndroids.VPEPuppeteer_AbilityExtension_TargetValidator_ValidateTarget_Patch))]
+    public static class HandlePuppeteerCompatibilityOptions
+    {
+        [HarmonyPatch(nameof(VREAndroids.VPEPuppeteer_AbilityExtension_TargetValidator_ValidateTarget_Patch.Prefix))]
+        [HarmonyPrefix]
+        public static bool CheckForCoils(ref bool __result, LocalTargetInfo target)
+        {
+            Log.Message("It was called");
+            if (!Settings.storedSettings.puppeteerAndroid)
+            {
+                return true;
+            }
+            if (!(target.Thing is  Pawn a))
+            {
+                Log.Error("Target is no pawn? what?");
+            }
+
+            if (!(target.Thing is Pawn pawn) ||
+                !pawn.genes.HasActiveGene(VREAPC_InternalDefs.VREA_Addon_PsychicCoils)) return true;
+            __result = true;
+            return false;
+
+        }
+    }
     public static class HandlePuppeteerCompatibilityPatch
     {
         //static string puppetid = nameof(VPEPuppeteer.VPEPuppeteerMod);
