@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ModMetaData>
-	<name>Psychic Coils - VRE Androids Add-On</name>
-	<author>adixdzx15(Compatibility patch), Negitive</author>
+	<name>Psychic Coils - VRE Androids Add-On (1.6)</name>
+	<author>Negitive, adixdzx15</author>
 	<supportedVersions>
 		<li>1.5</li>
 		<li>1.6</li>
 	</supportedVersions>
 	<packageId>VanillaRacesExpandedAddon.PsychicCoils</packageId>
 	<description>
-	Adds a new subroutine which allows Androids to have psychic capabilities, for good or for bad.
+		1.6 fix of the mod that adds a new subroutine which allows Androids to have psychic capabilities, for good or for bad.
+
+		Original mod made by Negitive.
 	</description>
 	
 	<modDependencies>
@@ -31,6 +33,5 @@
 	
 	<loadAfter>
 		<li>vanillaracesexpanded.android</li>
-		<li>vanillaexpanded.vpe.puppeteer</li>
 	</loadAfter>
 </ModMetaData>
