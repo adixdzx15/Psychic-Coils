@@ -22,4 +22,47 @@
         <PsychicSensitivity>2</PsychicSensitivity>
     </forcedTraits>
 </BackstoryDef>
+<BackstoryDef ParentName="VREA_AndroidBackstoryBase">
+    <defName>ImperialServant</defName>
+    <title>imperial servitor</title>
+    <titleShort>servitor</titleShort>
+    <titleFemale>imperial servitor</titleFemale>
+    <titleShortFemale>servitor</titleShortFemale>
+    <slot>Childhood</slot>
+    <baseDesc>[PAWN_nameDef] was built to serve in an imperial household. [PAWN_pronoun] was implemented with advanced housekeeping routines and the ability to appropiately converse with guests. But when [PAWN_possessive] family was exiled after a dishonorable scandal, [PAWN_pronoun] had to adapt to a new dangerous life.</baseDesc>
+    <spawnCategories>
+        <li>AwakenedAndroid</li>
+        <li>RoyalAndroid</li>
+    </spawnCategories>
+    <skillGains>
+        <Social>12</Social>
+        <Cooking>10</Cooking>
+        <Plants>4</Plants>
+        <Shooting>4</Shooting>
+        <Crafting>4</Crafting>
+        <Intellectual>2</Intellectual>
+    </skillGains>
+    </BackstoryDef>
+<BackstoryDef ParentName="VREA_AndroidBackstoryBase">
+    <defName>ImperialFighter</defName>
+    <title>imperial warbot</title>
+    <titleShort>warbot</titleShort>
+    <titleFemale>imperial warbot</titleFemale>
+    <titleShortFemale>warbot</titleShortFemale>
+    <slot>Childhood</slot>
+    <baseDesc>[PAWN_nameDef] was built for the front lines of the imperial army. [PAWN_pronoun] was imprinted with top-tier combat behavior and efficient repair algorithms to be highly effective in battle. But [PAWN_pronoun] existence suddenly changed when an ambitious imperial official staged an anti-android campaign - with [PAWN_nameDef] as the scapegoat.</baseDesc>
+    <spawnCategories>
+        <li>AwakenedAndroid</li>
+        <li>RoyalAndroid</li>
+    </spawnCategories>
+    <skillGains>
+        <Shooting>14</Shooting>
+        <Melee>12</Melee>
+        <Crafting>10</Crafting>
+        <Intellectual>5</Intellectual>
+        <Medicine>6</Medicine>
+    </skillGains>
+    </BackstoryDef>
+
+
 </Defs>
