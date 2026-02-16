@@ -9,7 +9,7 @@ added two mod options related to the (already existing) compatibility with the V
 I am not affiliated in any way with either the Vanilla Expanded team or the original mod author. To upload this fix, I am using the rights
 granted to me by the permissive CreativeCommons license under which the original mod (as well as this fix) is released.
 
-The following description was mostly taken from the original one, with slight changes to reflect certain changes.
+The following description was mostly taken from the original one, with slight alterations to reflect certain changes.
 
 # Psychic Coils!
 Adds a new Subroutine to the VREA Androids!
