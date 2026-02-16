@@ -69,10 +69,10 @@ namespace Psychic_Coiling_VRE_Addon
         private static bool shouldSkipVPE = false;
 
 
-        public static bool MindJumpPrefix(ref bool __result, Pawn ___pawn, LocalTargetInfo __target, bool showMessages)
+        public static bool MindJumpPrefix(ref bool __result, Pawn ___pawn, LocalTargetInfo target, bool showMessages)
         
         {
-            if ( Settings.storedSettings.AndroidToAnything || !(__target.Thing is Pawn pawn) || (!___pawn.IsAndroid() && ! pawn.IsAndroid()))
+            if ( Settings.storedSettings.AndroidToAnything || !(target.Thing is Pawn pawn) || (!___pawn.IsAndroid() && ! pawn.IsAndroid()))
             {
                 return true;
             }
