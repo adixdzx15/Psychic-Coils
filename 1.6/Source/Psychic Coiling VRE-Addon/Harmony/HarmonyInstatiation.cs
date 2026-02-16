@@ -80,7 +80,7 @@ namespace Psychic_Coiling_VRE_Addon
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look(ref puppeteerAndroid, "puppeteerAndroid");
+            Scribe_Values.Look(ref puppeteerAndroid, "puppeteerAndroid", true);
             Scribe_Values.Look(ref AndroidToAndroid, "androidToPuppet", true);
             Scribe_Values.Look(ref AndroidToAnything, "androidToAnything", false);
         }
