@@ -2,9 +2,10 @@
 
 <ModMetaData>
 	<name>Psychic Coils - VRE Androids Add-On</name>
-	<author>Negitive</author>
+	<author>adixdzx15(Compatibility patch), Negitive</author>
 	<supportedVersions>
 		<li>1.5</li>
+		<li>1.6</li>
 	</supportedVersions>
 	<packageId>VanillaRacesExpandedAddon.PsychicCoils</packageId>
 	<description>
@@ -30,5 +31,6 @@
 	
 	<loadAfter>
 		<li>vanillaracesexpanded.android</li>
+		<li>vanillaexpanded.vpe.puppeteer</li>
 	</loadAfter>
 </ModMetaData>
