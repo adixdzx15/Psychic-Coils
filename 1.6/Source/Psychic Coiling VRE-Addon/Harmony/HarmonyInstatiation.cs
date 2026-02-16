@@ -63,8 +63,15 @@ namespace Psychic_Coiling_VRE_Addon
                 //    storedSettings.puppeteerAndroid = false;
                 //}
                 list.CheckboxLabeled("Non-psydeaf androids can be affected by puppeteer psycasts", ref storedSettings.puppeteerAndroid);
+                
+                
 
             }
+            list.GapLine();
+            list.Label("Android Generation");
+            storedSettings.ImperialAndroid = list.SliderLabeled(
+                "Additional chance of a pawn generating with an imperial backstory (allows certain psycasts in Vanilla Psycasts Expanded)",
+                storedSettings.ImperialAndroid, 0, 1, tooltip: (100 * storedSettings.ImperialAndroid).ToString() + "%");
             list.End();
         }
     }
@@ -74,6 +81,8 @@ namespace Psychic_Coiling_VRE_Addon
         public bool puppeteerAndroid;
         public bool AndroidToAnything;
         public bool AndroidToAndroid = true;
+
+        public float ImperialAndroid;
         //public bool AwakenedPsychicCoils;
         //public bool AwakenedSubroutines;
 
@@ -83,6 +92,7 @@ namespace Psychic_Coiling_VRE_Addon
             Scribe_Values.Look(ref puppeteerAndroid, "puppeteerAndroid", true);
             Scribe_Values.Look(ref AndroidToAndroid, "androidToPuppet", true);
             Scribe_Values.Look(ref AndroidToAnything, "androidToAnything", false);
+            Scribe_Values.Look<float>(ref ImperialAndroid, "imperialAndroid",0f);
         }
     }
 }

@@ -45,15 +45,16 @@ namespace Psychic_Coiling_VRE_Addon
         [HarmonyPrefix]
         public static bool CheckForCoils(ref bool __result, LocalTargetInfo target)
         {
-            Log.Message("It was called");
+            // Log.Message("It was called");
             if (!Settings.storedSettings.puppeteerAndroid)
             {
                 return true;
             }
-            if (!(target.Thing is  Pawn a))
+            /*if (!(target.Thing is  Pawn a))
             {
                 Log.Error("Target is no pawn? what?");
             }
+            */
 
             if (!(target.Thing is Pawn pawn) ||
                 !pawn.genes.HasActiveGene(VREAPC_InternalDefs.VREA_Addon_PsychicCoils)) return true;
