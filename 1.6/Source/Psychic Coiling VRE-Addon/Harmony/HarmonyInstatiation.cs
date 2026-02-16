@@ -69,9 +69,13 @@ namespace Psychic_Coiling_VRE_Addon
             }
             list.GapLine();
             list.Label("Android Generation");
-            storedSettings.ImperialAndroid = list.SliderLabeled(
-                "Additional chance of a pawn generating with an imperial backstory (allows certain psycasts in Vanilla Psycasts Expanded)",
-                storedSettings.ImperialAndroid, 0, 1, tooltip: (100 * storedSettings.ImperialAndroid).ToString() + "%");
+            list.Gap();
+            list.Label(
+                "Additional chance of a pawn generating with an imperial backstory (allows certain psycasts in Vanilla Psycasts Expanded)");
+            storedSettings.ImperialAndroid = list.Slider(
+                storedSettings.ImperialAndroid, 0, 1);
+            list.Indent();
+            list.Label((100 * storedSettings.ImperialAndroid).ToString() + "%");
             list.End();
         }
     }
