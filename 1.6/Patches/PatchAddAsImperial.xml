@@ -5,7 +5,7 @@
         <xpath>Defs/VanillaPsycastsExpanded.PsycasterPathDef[defName="VPE_Archotechist" or defName="VPEP_Puppeteer"]/requiredBackstoriesAny</xpath>
         <value>
             <li>
-                <categoryName>RoyalGuardX24</categoryName>
+                <categoryName>RoyalAndroid</categoryName>
                 <slot>Childhood</slot>
             </li>
         </value>
