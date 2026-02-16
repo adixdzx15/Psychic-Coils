@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/VanillaPsycastsExpanded.PsycasterPathDef[defName="VPE_Archotechist" or defName="VPEP_Puppeteer"]/requiredBackstoriesAny</xpath>
+        <value>
+            <li>
+                <categoryName>RoyalGuardX24</categoryName>
+                <slot>Childhood</slot>
+            </li>
+        </value>
+    </Operation>
+</Patch>

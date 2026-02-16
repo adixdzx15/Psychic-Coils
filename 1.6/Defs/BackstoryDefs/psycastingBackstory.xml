@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BackstoryDef ParentName="VREA_AndroidBackstoryBase">
+    <defName>RoyalGuardX24</defName>
+    <title>royal guard</title>
+    <titleShort>guardbot</titleShort>
+    <titleFemale>royal guardbot</titleFemale>
+    <titleShortFemale>guardbot</titleShortFemale>
+    <slot>Childhood</slot>
+    <baseDesc>[PAWN_nameDef] was built by an imperial research project in an effort to create the perfect royal guard android. [PAWN_pronoun] was programmed with extensive military knowledge and the secrets of imperial psycasters. However, [PAWN_possessive] distinguishing feature is 
+    the custom frame enhancing psychic resonance. But before the critical component, a core of Eltex coils, could be manufactured, the project lost all funding and [PAWN_nameDef] was abandoned.</baseDesc>
+    <spawnCategories>
+        <li>AwakenedAndroid</li>
+    </spawnCategories>
+    <skillGains>
+        <Shooting>6</Shooting>
+        <Melee>10</Melee>
+        <Social>4</Social>
+        <Intellectual>5</Intellectual>
+    </skillGains>
+    <forcedTraits>
+        <PsychicSensitivity>2</PsychicSensitivity>
+    </forcedTraits>
+</BackstoryDef>
