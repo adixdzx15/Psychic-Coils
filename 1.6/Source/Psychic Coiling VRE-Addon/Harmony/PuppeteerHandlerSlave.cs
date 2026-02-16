@@ -72,6 +72,7 @@ namespace Psychic_Coiling_VRE_Addon
         public static bool MindJumpPrefix(ref bool __result, Pawn ___pawn, LocalTargetInfo target, bool showMessages)
         
         {
+            Log.Message("Logged something");
             if ( Settings.storedSettings.AndroidToAnything || !(target.Thing is Pawn pawn) || (!___pawn.IsAndroid() && ! pawn.IsAndroid()))
             {
                 return true;
@@ -79,6 +80,7 @@ namespace Psychic_Coiling_VRE_Addon
 
             if (Settings.storedSettings.AndroidToAndroid)
             {
+                
                 if (___pawn.IsAndroid() && pawn.IsAndroid())
                 {
                     return true;
