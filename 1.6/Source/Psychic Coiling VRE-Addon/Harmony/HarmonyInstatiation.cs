@@ -17,7 +17,7 @@ namespace Psychic_Coiling_VRE_Addon
     {
         static Main()
         {
-            var harmony = new HarmonyLib.Harmony("com.Psychic_Coiling_VRE_Addon");
+            var harmony = new HarmonyLib.Harmony(nameof(Psychic_Coiling_VRE_Addon));
             harmony.PatchAll();
             PuppeteerCompatibility.HandlePuppeteerCompatibility(harmony);
         }
@@ -45,16 +45,24 @@ namespace Psychic_Coiling_VRE_Addon
             if (ModsConfig.IsActive("VanillaExpanded.VPE.Puppeteer"))
             {
                 list.Label("Compatibility with Vanilla Psycasts Expanded - Puppeteer:");
-                if (storedSettings.puppeteerAndroid)
+                // if (storedSettings.puppeteerAndroid)
+                // {
+                //     storedSettings.AndroidToPuppet = true;
+                // }
+                list.CheckboxLabeled("Androids can swap with android puppets", ref storedSettings.AndroidToAndroid);
+                if (storedSettings.AndroidToAndroid)
                 {
-                    storedSettings.AndroidToPuppet = true;
+                    list.CheckboxLabeled("\t Androids puppets and puppeteers can swap (and be swapped) with any pawn", ref storedSettings.AndroidToAnything);
                 }
-                list.CheckboxLabeled("Androids can swap with Puppets", ref storedSettings.AndroidToPuppet);
-                if (!storedSettings.AndroidToPuppet)
+                else
                 {
-                    storedSettings.puppeteerAndroid = false;
+                    Settings.storedSettings.AndroidToAnything = false;
                 }
-                list.CheckboxLabeled("\tAndroids can directly become Puppets", ref storedSettings.puppeteerAndroid);
+                //if (!storedSettings.AndroidToPuppet)
+                //{
+                //    storedSettings.puppeteerAndroid = false;
+                //}
+                list.CheckboxLabeled("Non-psydeaf androids can be affected by puppeteer psycasts", ref storedSettings.puppeteerAndroid);
 
             }
             list.End();
@@ -64,16 +72,17 @@ namespace Psychic_Coiling_VRE_Addon
     public class StoredSettings : ModSettings
     {
         public bool puppeteerAndroid;
-        public bool AndroidToPuppet = true;
-        public bool AwakenedPsychicCoils;
-        public bool AwakenedSubroutines;
+        public bool AndroidToAnything;
+        public bool AndroidToAndroid = true;
+        //public bool AwakenedPsychicCoils;
+        //public bool AwakenedSubroutines;
 
         public override void ExposeData()
         {
             base.ExposeData();
             Scribe_Values.Look(ref puppeteerAndroid, "puppeteerAndroid");
-            Scribe_Values.Look(ref AndroidToPuppet, "androidToPuppet", true);
-            Scribe_Values.Look(ref AwakenedPsychicCoils, "awakenedPsychic", false);
+            Scribe_Values.Look(ref AndroidToAndroid, "androidToPuppet", true);
+            Scribe_Values.Look(ref AndroidToAnything, "androidToAnything", false);
         }
     }
 }

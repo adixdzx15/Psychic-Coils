@@ -2,6 +2,8 @@
 using HarmonyLib;
 using Verse;
 using Verse.AI;
+using RimWorld;
+using VPEPuppeteer;
 using VREAndroids;
 using MentalStateHandler_TryStartMentalState_Patch = VPEPuppeteer.MentalStateHandler_TryStartMentalState_Patch;
 
@@ -20,15 +22,19 @@ namespace Psychic_Coiling_VRE_Addon
                 typeof(HandlePuppeteerCompatibilityPatch).GetMethod(nameof(HandlePuppeteerCompatibilityPatch
                     .ResetFinalizer));
             var VPEInfo = typeof(HandlePuppeteerCompatibilityPatch).GetMethod(nameof(HandlePuppeteerCompatibilityPatch.VPEPrefix));
+            var VPEMindInfo = typeof(HandlePuppeteerCompatibilityPatch).GetMethod(nameof(HandlePuppeteerCompatibilityPatch.MindJumpPrefix));
             var patchedName = new string[1];
             patchedName[0] = nameof(VPEPuppeteer.VPEPuppeteerMod);
             var method = new HarmonyMethod(myPrefixInfo, before : patchedName);
             var resetMethod = new HarmonyMethod(finalizerInfo);
             var vpePatcher = new HarmonyMethod(VPEInfo);
             var vpeMethod = AccessTools.Method(typeof(MentalStateHandler_TryStartMentalState_Patch), "Prefix");
+            var vpeJumpPatch = new HarmonyMethod(VPEMindInfo);
+            var vpeJumpPatched = AccessTools.Method(typeof(Ability_MindJump), nameof(Ability_MindJump.ValidateTarget));
             var originalMethod = AccessTools.Method(typeof(MentalStateHandler), "TryStartMentalState"); ;
             harmony.Patch(originalMethod, prefix: method, finalizer: resetMethod);
             harmony.Patch(vpeMethod, prefix: vpePatcher);
+            harmony.Patch(vpeJumpPatched, prefix: vpeJumpPatch);
         }
     }
 
@@ -62,6 +68,38 @@ namespace Psychic_Coiling_VRE_Addon
         //[HarmonyBefore([puppetid])]
         private static bool shouldSkipVPE = false;
 
+
+        public static bool MindJumpPrefix(ref bool __result, Pawn ___pawn, LocalTargetInfo __target, bool showMessages)
+        
+        {
+            if ( Settings.storedSettings.AndroidToAnything || !(__target.Thing is Pawn pawn) || (!___pawn.IsAndroid() && ! pawn.IsAndroid()))
+            {
+                return true;
+            }
+
+            if (Settings.storedSettings.AndroidToAndroid)
+            {
+                if (___pawn.IsAndroid() && pawn.IsAndroid())
+                {
+                    return true;
+                }
+                if (showMessages)
+                {   if (___pawn.IsAndroid())
+                        Messages.Message((string) "Can only cast on Android puppet", MessageTypeDefOf.CautionInput);
+                    else Messages.Message((string) "Can only cast on Human puppet", MessageTypeDefOf.CautionInput);
+
+                    
+                }
+                __result = false;
+                return false;
+            }
+            else
+            {
+                Messages.Message((string) "Androids can not mind jump", MessageTypeDefOf.CautionInput);
+                __result = false;
+                return false;
+            }
+        }
         
         public static bool VPEPrefix(ref bool __result)
         {

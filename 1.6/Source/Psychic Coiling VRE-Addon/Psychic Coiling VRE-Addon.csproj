@@ -53,6 +53,10 @@
       <HintPath>$(SteamDir)/steamapps/workshop/content/294100/2975771801/1.6/Assemblies/VREAndroids.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="VEFramework">
+      <HintPath>$(SteamDir)/steamapps/workshop/content/294100/2023507013/1.6/Assemblies/VEF.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Harmony\AndroidCreationWindowPatch.cs" />
@@ -71,8 +75,8 @@
       <Version>1.6.4633</Version>
     </PackageReference>
     <PackageReference Include="Lib.Harmony">
-      <PrivateAssets>all</PrivateAssets>
       <Version>2.3.3</Version>
+      <PrivateAssets>none</PrivateAssets>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
