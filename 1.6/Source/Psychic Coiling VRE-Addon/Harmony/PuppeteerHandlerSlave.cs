@@ -104,11 +104,11 @@ namespace Psychic_Coiling_VRE_Addon
             }
         }
         
-        public static bool VPEPrefix(ref bool __result, bool ___shouldStartMentalState)
+        public static bool VPEPrefix(ref bool __result)
         {
             if (shouldSkipVPE)
             {
-                if (___shouldStartMentalState)
+                if (MentalStateHandler_TryStartMentalState_Patch.shouldStartMentalState)
                 {
                     __result = false;
                     shouldSkipVPE = false;
